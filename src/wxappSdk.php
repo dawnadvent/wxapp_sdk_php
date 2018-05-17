@@ -10,7 +10,7 @@ class wxappSdk
     protected $appsecret;
     protected $jscode2sessionUrl = 'https://api.weixin.qq.com/sns/jscode2session?';
 
-	public function __construct($appid = '', $appsecret = '')
+    public function __construct($appid = '', $appsecret = '')
     {
         $this->appid = $appid;
         $this->appsecret = $appsecret;
@@ -20,13 +20,13 @@ class wxappSdk
      * 临时登录凭证code 获取 session_key 和 openid 等。
      * @param $code string
      * @return array
-	 * @help https://developers.weixin.qq.com/miniprogram/dev/api/api-login.html
+     * @help https://developers.weixin.qq.com/miniprogram/dev/api/api-login.html
      */
     public function login($code)
     {
-		if($code){return ['errcode'=>1000,'errmsg'=>'code不能为空'];}
+        if($code){return ['errcode'=>1000,'errmsg'=>'code不能为空'];}
         $url = $jscode2sessionUrl.'appid='.$this->appid.'&secret='.$this->appsecret.'&js_code='.$code.'&grant_type=authorization_code';
-		$ch = curl_init();
+        $ch = curl_init();
         $timeout = 600;
         curl_setopt ($ch, CURLOPT_URL, $url);
         curl_setopt ($ch, CURLOPT_HEADER, 1);
@@ -40,6 +40,6 @@ class wxappSdk
 
     protected function test($txt)
     {
-		return $txt;
+        return $txt;
     }
 }
