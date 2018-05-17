@@ -1,16 +1,18 @@
 {
     "name": "hiteochew/wxapp_sdk_php",
-    "description": "微信小程序接口的php类，方便php开发者便捷调用，比如wx.login接口后端的获取code等操作",
-    "keywords": ["php", "thinkphp", "yii", "wxapp", "wechat", "微信小程序"],
-    "homepage": "https://github.com/hiteochew/wxapp_sdk_php",
+    "description": "for wxapp",
+    "type": "library",
     "license": "GNU",
     "authors": [
         {
             "name": "HiTeochew",
-            "email": "dong@teochew.pw",
-            "homepage": "https://hiteo.pw"
+            "email": "dong@teochew.pw"
         }
     ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4.0"
+    },
     "autoload": {
         "psr-4": {
             "wxappSdk\\": "src/"
