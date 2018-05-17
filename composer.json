@@ -2,7 +2,7 @@
     "name": "hiteochew/wxapp_sdk_php",
     "description": "for wxapp",
     "type": "library",
-    "license": "GNU",
+    "license": "MIT",
     "authors": [
         {
             "name": "HiTeochew",
