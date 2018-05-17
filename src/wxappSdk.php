@@ -40,6 +40,6 @@ class wxappSdk
 
     protected function test($txt)
     {
-        return $txt;
+        return $this->appid.$txt;
     }
 }
