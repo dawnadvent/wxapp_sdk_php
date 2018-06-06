@@ -24,17 +24,18 @@ class wxappSdk
      */
     public function login($code)
     {
-        if($code){return ['errcode'=>1000,'errmsg'=>'code不能为空'];}
-        $url = $jscode2sessionUrl.'appid='.$this->appid.'&secret='.$this->appsecret.'&js_code='.$code.'&grant_type=authorization_code';
+        if(!$code){return ['errcode'=>1000,'errmsg'=>'code不能为空'];}
+        $url = $this->jscode2sessionUrl.'appid='.$this->appid.'&secret='.$this->appsecret.'&js_code='.$code.'&grant_type=authorization_code';
         $ch = curl_init();
-        $timeout = 600;
         curl_setopt ($ch, CURLOPT_URL, $url);
-        curl_setopt ($ch, CURLOPT_HEADER, 1);
+        curl_setopt ($ch, CURLOPT_HEADER, 0);
         curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+        curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, 600);
         $str = curl_exec($ch);
+        if(false == $str){
+            return ['errcode'=>1001,'errmsg'=>'获取登录信息失败，请重新打开试试'];
+        }
         curl_close($ch);
-        if(false == $str){return ['errcode'=>1001,'errmsg'=>'获取登录信息失败，请重新打开试试'];}
         return json_decode($str,true);
     }
 
